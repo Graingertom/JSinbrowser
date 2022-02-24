@@ -4,22 +4,42 @@ const myForm = document.querySelector('form')
 myForm.addEventListener("submit", e => {
     e.preventDefault();
 
-    let greeting = e.target.greeting.value
+    let greeting = e.target.to.value
     let celebration = e.target.typeOfEvent.value
-    let message = e.target.message.value
+    let message = e.target.from.value
     
     let newHeader = document.createElement('h2')
-    let newGreeting = document.createTextNode(`${greeting}`)
+    let newGreeting = document.createTextNode(`To ${greeting}`)
     newHeader.appendChild(newGreeting)
+    newHeader.style.textAlign = "center"
+    newHeader.style.color = "white"
 
     let body = document.querySelector('body');
     body.appendChild(newHeader)
 
-    let newPara = document.createElement('p')
-    let newMessage = document.createTextNode(`${message}`)
-    newPara.appendChild(newMessage)
+    let newPara1 = document.createElement('p')
+    let displayCelebration = () => {
+        if (celebration === "birthday") {
+            return document.createTextNode("Happy Birthday!!")
+        } else if (celebration === "christmas") {
+            return document.createTextNode("Merry Christmas")
+        } else if (celebration === "easter") {
+            return document.createTextNode("Happy Easter!")
+        }
+    }
+    let newCelebration = displayCelebration()
+    newPara1.appendChild(newCelebration)
+    newPara1.style.textAlign = "center"
+    newPara1.style.color = "white"
 
-    body.appendChild(newMessage)
+    let newPara2 = document.createElement('p')
+    let newMessage = document.createTextNode(`From ${message}`)
+    newPara2.appendChild(newMessage)
+    newPara2.style.textAlign = "center"
+    newPara2.style.color = "white"
+
+    body.appendChild(newPara1)
+    body.appendChild(newPara2)
 
     myForm.classList.add("hidden")
 

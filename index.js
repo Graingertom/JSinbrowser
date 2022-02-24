@@ -32,8 +32,11 @@ myForm.addEventListener("submit", e => {
       .then( function(data) {
          const imgUrl = data['results'][parseInt(Math.random()*10)]['urls']['full']
          console.log(imgUrl)
-         document.body.style.backgroundImage = `url(${imgUrl})`;
-         document.body.style.backgroundImage = "no-repeat top right"
+         document.body.style.backgroundImage = `url(${imgUrl})`
+         document.body.style.backgroundPosition = "center"
+         document.body.style.backgroundRepeat = "no-repeat"
+         document.body.style.backgroundSize = "cover"
+         document.body.style.height = "100%"
        })
 })
 
